@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class abilityStat {
-    public string abilityName;
-    public float abilityNum;
+[Serializable]
+public class AbilityStat {
+    public string aName;
+    public float aNum;
 }
 
 public class CardAbility : MonoBehaviour
 {
     [SerializeField]
-    private abilityStat[] abilities;
+    private List<AbilityStat> abilities;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +20,16 @@ public class CardAbility : MonoBehaviour
     }
 
     public void Apply() {
-        foreach (abilityStat ability in abilities) {
+        foreach (AbilityStat ability in abilities) {
             ApplySingle(ability);
         }
     }
 
-    void ApplySingle(abilityStat ability) {
-        string abilityName = ability.abilityName;
+    void ApplySingle(AbilityStat ability) {
+        string abilityName = ability.aName;
         switch (abilityName) {
             case "ChangeEnergy" :
-                modifyEnergy((int)ability.abilityNum);
+                modifyEnergy((int)ability.aNum);
                 break;
             case "DoubleJump" :
                 CharacterSystem.instance.characterController.doubleJump();
@@ -42,7 +44,7 @@ public class CardAbility : MonoBehaviour
                 CharacterSystem.instance.shuriken();
                 break;
             case "ChangeHealth" :
-                modifyHealth((int)ability.abilityNum);
+                modifyHealth((int)ability.aNum);
                 break;
             case "ChangeRandomCardEnergy" :
                 break;

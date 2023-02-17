@@ -33,6 +33,7 @@ public class CardSystem : MonoBehaviour
         int length = currentCardDeck.Count;
         Card thisCard = currentCardDeck[0];
         currentCardDeck.RemoveAt(0);
+        CardNumDeck--;
         return thisCard;
     }
 
@@ -41,6 +42,7 @@ public class CardSystem : MonoBehaviour
         int randomNum = Random.Range(0, length);
         Card thisCard = currentCardDeck[randomNum];
         currentCardDeck.RemoveAt(randomNum);
+        CardNumDeck--;
         return thisCard;
     }
 
@@ -48,24 +50,29 @@ public class CardSystem : MonoBehaviour
         int length = currentCardDeck.Count;
         int randomNum = Random.Range(0, length);
         currentCardDeck.Insert(randomNum, card);
+        CardNumDeck++;
     }
 
     public Card drawCard(int keyInput) {
-        Card thisCard = drawCard();
-        currentCardHand.Insert(keyInput, thisCard);
-        return thisCard;
+        if (CardNumDeck > 0) {
+            Card thisCard = drawCard();
+            currentCardHand.Insert(keyInput, thisCard);
+            CardNumHand++;
+            return thisCard;
+        } else return null;
     }
 
     public void dropCard(int keyInput) {
-        Card removedCard = currentCardHand[keyInput];
-        currentCardHand.RemoveAt(keyInput);
-        currentCardDump.Add(removedCard);
+        if (CardNumHand > 0) {
+            Card removedCard = currentCardHand[keyInput];
+            currentCardHand.RemoveAt(keyInput);
+            CardNumHand--;
+            currentCardDump.Add(removedCard);
+        } else return;
     }
 
     public void dropAndDraw(int keyInput) {
         dropCard(keyInput);
         drawCard(keyInput);
     }
-
-    
 }

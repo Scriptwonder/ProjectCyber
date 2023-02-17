@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public Transform startPoint;
-    public Transform endPoint;
-
     public Transform groundCheck;
     public float groundRadius = 0.2f;
 
