@@ -36,9 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/Script/CardSystem.cs" />
-     <Compile Include="Assets/Script/CharacterSystem.cs" />
      <Compile Include="Assets/Script/CharacterController.cs" />
+     <Compile Include="Assets/Script/CharacterSystem.cs" />
+     <Compile Include="Assets/Script/CardSystem.cs" />
+     <Compile Include="Assets/Script/Card.cs" />
+     <Compile Include="Assets/Script/CardAbility.cs" />
+     <Compile Include="Assets/Script/EnemyAIRobot.cs" />
+     <Compile Include="Assets/Script/EnemyAICam.cs" />
+     <Compile Include="Assets/Script/Enemy.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.9f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
