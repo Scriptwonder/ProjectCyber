@@ -59,6 +59,14 @@ public class IdleWalkRun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z)) {
                 mAnimator.SetTrigger("Contact");
             }
+
+            if (Input.GetKeyDown(KeyCode.X)) {
+                mAnimator.SetTrigger("Punch");
+            }
+
+            if (Input.GetKeyDown(KeyCode.C)) {
+                mAnimator.SetTrigger("Dash");
+            }
         }
     }
 
