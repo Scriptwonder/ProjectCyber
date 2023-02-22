@@ -55,6 +55,10 @@ public class IdleWalkRun : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space)) {
                 mAnimator.SetTrigger("Jump");
             }
+
+            if (Input.GetKeyDown(KeyCode.Z)) {
+                mAnimator.SetTrigger("Contact");
+            }
         }
     }
 
