@@ -10,20 +10,23 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    public void PlayCard() {
-        if (energyCost > CharacterSystem.instance.playerEnergy) {
+    public void PlayCard()
+    {
+        if (energyCost > CharacterSystem.instance.playerEnergy)
+        {
             Debug.Log("Not enough mana for " + cardName);
             return;
         }
         CharacterSystem.instance.playerEnergy -= energyCost;
 
-        if (ability != null) {
+        if (ability != null)
+        {
             ability.Apply();
         }
     }
 
-    
+
 }

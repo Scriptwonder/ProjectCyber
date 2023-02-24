@@ -12,10 +12,14 @@ public class CardSystem : MonoBehaviour
     public List<Card> currentCardDump = new List<Card>();
     private int maxCardHand;
     public static CardSystem instance = null;
-    void Awake() {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        } else if (instance != this) {
+        }
+        else if (instance != this)
+        {
             Destroy(gameObject);
         }
     }
@@ -24,12 +28,14 @@ public class CardSystem : MonoBehaviour
     void Start()
     {
         //populate the hand with 4 cards
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++)
+        {
             drawCard(i);
         }
     }
 
-    Card drawCard() {
+    Card drawCard()
+    {
         int length = currentCardDeck.Count;
         Card thisCard = currentCardDeck[0];
         currentCardDeck.RemoveAt(0);
@@ -37,7 +43,8 @@ public class CardSystem : MonoBehaviour
         return thisCard;
     }
 
-    Card drawRandomCard() {
+    Card drawRandomCard()
+    {
         int length = currentCardDeck.Count;
         int randomNum = Random.Range(0, length);
         Card thisCard = currentCardDeck[randomNum];
@@ -46,32 +53,40 @@ public class CardSystem : MonoBehaviour
         return thisCard;
     }
 
-    public void AddCardtoDeck(Card card) {
+    public void AddCardtoDeck(Card card)
+    {
         int length = currentCardDeck.Count;
         int randomNum = Random.Range(0, length);
         currentCardDeck.Insert(randomNum, card);
         CardNumDeck++;
     }
 
-    public Card drawCard(int keyInput) {
-        if (CardNumDeck > 0) {
+    public Card drawCard(int keyInput)
+    {
+        if (CardNumDeck > 0)
+        {
             Card thisCard = drawCard();
             currentCardHand.Insert(keyInput, thisCard);
             CardNumHand++;
             return thisCard;
-        } else return null;
+        }
+        else return null;
     }
 
-    public void dropCard(int keyInput) {
-        if (CardNumHand > 0) {
+    public void dropCard(int keyInput)
+    {
+        if (CardNumHand > 0)
+        {
             Card removedCard = currentCardHand[keyInput];
             currentCardHand.RemoveAt(keyInput);
             CardNumHand--;
             currentCardDump.Add(removedCard);
-        } else return;
+        }
+        else return;
     }
 
-    public void dropAndDraw(int keyInput) {
+    public void dropAndDraw(int keyInput)
+    {
         dropCard(keyInput);
         drawCard(keyInput);
     }

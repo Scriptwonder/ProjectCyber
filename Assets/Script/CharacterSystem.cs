@@ -19,19 +19,24 @@ public class CharacterSystem : MonoBehaviour
     public int shurikenAtkDmg = 1;
 
     private Collider2D hitCollider;
-    void Awake() {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        } else if (instance != this) {
+        }
+        else if (instance != this)
+        {
             Destroy(gameObject);
         }
     }
     void Start()
     {
-        
+
     }
 
-    void restart() {
+    void restart()
+    {
         playerEnergy = maxPlayerEnergy;
         playerHP = maxPlayerHP;
     }
@@ -39,55 +44,73 @@ public class CharacterSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerHP <= 0) {
+        if (playerHP <= 0)
+        {
             gameover();
         }
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("q"))
+        {
             CardSystem.instance.currentCardHand[0].PlayCard();
             CardSystem.instance.dropAndDraw(0);
-        } else if (Input.GetKeyDown("w")) {
+        }
+        else if (Input.GetKeyDown("w"))
+        {
             CardSystem.instance.currentCardHand[1].PlayCard();
             CardSystem.instance.dropAndDraw(1);
-        } else if (Input.GetKeyDown("e")) {
+        }
+        else if (Input.GetKeyDown("e"))
+        {
             CardSystem.instance.currentCardHand[2].PlayCard();
             CardSystem.instance.dropAndDraw(2);
-        } else if (Input.GetKeyDown("r")) {
+        }
+        else if (Input.GetKeyDown("r"))
+        {
             CardSystem.instance.currentCardHand[3].PlayCard();
             CardSystem.instance.dropAndDraw(3);
         }
     }
 
-    void gameover() {
+    void gameover()
+    {
         //play some ui and animation
 
     }
 
-    public void melee() {
+    public void melee()
+    {
         //check around the melee radius and attack
         //attack animation TODO
         hitCollider = Physics2D.OverlapCircle(transform.position, meleeAttackRange, 6);//6 stands for enemy
-        if (hitCollider.CompareTag("Enemy")) {
+        if (hitCollider.CompareTag("Enemy"))
+        {
             hitCollider.gameObject.GetComponent<Enemy>().takeDamage(meleeAtkDmg);
         }
     }
 
-    public void shuriken() {
+    public void shuriken()
+    {
         //check around the ranged radius and attack
         hitCollider = Physics2D.OverlapCircle(transform.position, shurikenAttackRange, 6);//6 stands for enemy
-        if (hitCollider.CompareTag("Enemy")) {
+        if (hitCollider.CompareTag("Enemy"))
+        {
             hitCollider.gameObject.GetComponent<Enemy>().takeDamage(shurikenAtkDmg);
         }
     }
 
-    void beenHit(int hpLoss) {
-        if (playerHP < hpLoss) {
+    void beenHit(int hpLoss)
+    {
+        if (playerHP < hpLoss)
+        {
             playerHP = 0;
-        } else {
+        }
+        else
+        {
             playerHP -= hpLoss;
         }
     }
 
-    void beenHitCard(Card card) {
+    void beenHitCard(Card card)
+    {
         CardSystem.instance.AddCardtoDeck(card);
     }
 }

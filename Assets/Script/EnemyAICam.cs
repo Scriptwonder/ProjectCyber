@@ -33,7 +33,8 @@ public class EnemyAICam : MonoBehaviour
             if (distance <= attackRange)
             {
                 // Attack player
-                if (!Physics.Linecast(this.transform.position, player.position)) {
+                if (!Physics.Linecast(this.transform.position, player.position))
+                {
                     //send a missile TODO
 
                 }

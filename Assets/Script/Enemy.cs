@@ -10,18 +10,21 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (hp <= 0) {
+        if (hp <= 0)
+        {
             destroy();
         }
 
     }
 
-    void destroy() {
+    void destroy()
+    {
         //explode animation
         Destroy(gameObject);
     }
 
-    public void takeDamage(int dmg) {
+    public void takeDamage(int dmg)
+    {
         hp -= dmg;
     }
 }

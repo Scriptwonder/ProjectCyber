@@ -32,28 +32,33 @@ public class CharacterController : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, 0);
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && !isJumping) {
+        if (Input.GetButtonDown("Jump") && !isJumping)
+        {
             rb.AddForce(new Vector2(0, jumpForce));
             isJumping = true;
             isGrounded = false;
         }
 
-        if (isDashing && Time.time >= dashTime) {
+        if (isDashing && Time.time >= dashTime)
+        {
             isDashing = false;
             rb.velocity = new Vector2(rb.velocity.x, 0);
         }
 
-        if (isGrounded) {
+        if (isGrounded)
+        {
             isJumping = false;
         }
     }
 
-    public void doubleJump() {
+    public void doubleJump()
+    {
         rb.AddForce(new Vector2(0, jumpForce));
         //animations TODO
     }
 
-    public void dash() {
+    public void dash()
+    {
         isDashing = true;
         dashTime = Time.time + dashDuration;
         rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -62,15 +67,19 @@ public class CharacterController : MonoBehaviour
     }
 
     // This method is called when the ground check object enters a trigger collider
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == 5) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 5)
+        {
             isGrounded = true;
         }
     }
 
     // This method is called when the ground check object exits a trigger collider
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.layer == 5) {
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 5)
+        {
             isGrounded = false;
         }
     }
